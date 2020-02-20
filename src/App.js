@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import "./App.css";
 import axios from 'axios'
 import DayCard from  './components/card/card'
+import styled from "styled-components";
+
 
 
 function App() {
@@ -16,12 +18,15 @@ function App() {
       console.log(error)
     })
   }, [])
-
+  const Wrapper = styled.div`
+  background-color: black;
+  height: 100vh
+`
   // console.log(data)
   return (
-    <div>
+    <Wrapper>
       <DayCard data = {data} className='app'/>
-    </div>
+    </Wrapper>
   );
 }
 

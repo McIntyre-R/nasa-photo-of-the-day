@@ -1,26 +1,49 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Card, CardText, CardBody,
-    CardTitle, Badge
+    CardTitle, Badge,  Modal,  ModalBody
   } from 'reactstrap';
-import styled from "styled-components";
+  import styled from "styled-components";
 
-function DayCard(props) {
+const Header = styled(CardTitle)`
+  font-size: 3rem;
+`
+const GoodCard = styled(Card)`
+  max-width: 800px;
+  margin: auto;
+`
+
+
+ function DayCard(props) {
+
+   
+      
+        const [modal, setModal] = useState(false);
+      
+        const toggle = () => setModal(!modal);
     // console.log(props.data)
     return(
 
-        <div>
-        <Card>
+       <div>
+        <GoodCard>
           <CardBody>
-            <CardTitle fontSize='30px'>{props.data.title} <Badge color="warning">{props.data.date}</Badge></CardTitle>
+            <Header fontSize='30px'>{props.data.title} <Badge color="warning">{props.data.date}</Badge></Header>
 
           </CardBody>
-          <img width="100%" src={props.data.url} alt="Card image cap" />
-          <CardBody>
+          <img width="100%"  src={props.data.url} alt="Card image cap" onClick={toggle}/>
+          {/* <CardBody>
             <CardText>{props.data.explanation}</CardText>
-          </CardBody>
-        </Card>
-      </div>
+          </CardBody> */}
+        </GoodCard>
+        <Modal isOpen={modal} toggle={toggle}>
+        <ModalBody toggle={toggle}>
+          {props.data.explanation}   
+        </ModalBody>
+      </Modal>
+      </div> 
+
+
+     
 
 
         // <div>
