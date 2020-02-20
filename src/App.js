@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import "./App.css";
 import axios from 'axios'
-import Card from  './components/card/card'
+import DayCard from  './components/card/card'
 
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   // console.log(data)
   return (
     <div>
-      <Card data = {data} className='app'/>
+      <DayCard data = {data} className='app'/>
     </div>
   );
 }
